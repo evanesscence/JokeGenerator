@@ -9,9 +9,17 @@ class ViewController: UIViewController {
     @IBOutlet private var refreshButton: UIButton!
     @IBOutlet private var showButton: UIButton!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setViews(views: [jokeId, jokeType, jokeSetup, refreshButton, showButton])
+    }
+    
+    @IBAction func refreshButton(_ sender: Any) {
+    }
+    
+    
+    @IBAction func showButton(_ sender: Any) {
     }
 
     // MARK: Private functions
@@ -22,5 +30,7 @@ class ViewController: UIViewController {
             $0.layer.borderColor = UIColor.rBlack.cgColor
         }
     }
+    
+    
 }
 

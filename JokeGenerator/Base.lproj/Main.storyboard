@@ -122,6 +122,9 @@
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="icon" title=""/>
+                                                <connections>
+                                                    <action selector="refreshButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N3V-UP-JTa"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fSo-Bb-HYi" userLabel="showButton">
                                                 <rect key="frame" x="80" y="92" width="249" height="64"/>
@@ -131,6 +134,9 @@
                                                 <buttonConfiguration key="configuration" style="plain" title="Show punchline">
                                                     <fontDescription key="titleFontDescription" name="Roboto-Bold" family="Roboto" pointSize="16"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="showButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="957-yw-K5c"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
