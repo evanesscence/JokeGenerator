@@ -13,9 +13,6 @@
 		9A1B158A2B4FC6F500E89F7B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A1B15882B4FC6F500E89F7B /* Main.storyboard */; };
 		9A1B158C2B4FC6F600E89F7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A1B158B2B4FC6F600E89F7B /* Assets.xcassets */; };
 		9A1B158F2B4FC6F600E89F7B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A1B158D2B4FC6F600E89F7B /* LaunchScreen.storyboard */; };
-		9A1B159A2B4FC6F600E89F7B /* JokeGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1B15992B4FC6F600E89F7B /* JokeGeneratorTests.swift */; };
-		9A1B15A42B4FC6F600E89F7B /* JokeGeneratorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1B15A32B4FC6F600E89F7B /* JokeGeneratorUITests.swift */; };
-		9A1B15A62B4FC6F600E89F7B /* JokeGeneratorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1B15A52B4FC6F600E89F7B /* JokeGeneratorUITestsLaunchTests.swift */; };
 		9A1B15C22B4FD9F900E89F7B /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A1B15B52B4FD9F900E89F7B /* Roboto-Medium.ttf */; };
 		9A1B15C32B4FD9F900E89F7B /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A1B15B62B4FD9F900E89F7B /* Roboto-Light.ttf */; };
 		9A1B15C42B4FD9F900E89F7B /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A1B15B72B4FD9F900E89F7B /* Roboto-Regular.ttf */; };
@@ -58,10 +55,7 @@
 		9A1B158E2B4FC6F600E89F7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A1B15902B4FC6F600E89F7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A1B15952B4FC6F600E89F7B /* JokeGeneratorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JokeGeneratorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A1B15992B4FC6F600E89F7B /* JokeGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeGeneratorTests.swift; sourceTree = "<group>"; };
 		9A1B159F2B4FC6F600E89F7B /* JokeGeneratorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JokeGeneratorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A1B15A32B4FC6F600E89F7B /* JokeGeneratorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeGeneratorUITests.swift; sourceTree = "<group>"; };
-		9A1B15A52B4FC6F600E89F7B /* JokeGeneratorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeGeneratorUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9A1B15B52B4FD9F900E89F7B /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		9A1B15B62B4FD9F900E89F7B /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		9A1B15B72B4FD9F900E89F7B /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -106,8 +100,6 @@
 			isa = PBXGroup;
 			children = (
 				9A1B15812B4FC6F500E89F7B /* JokeGenerator */,
-				9A1B15982B4FC6F600E89F7B /* JokeGeneratorTests */,
-				9A1B15A22B4FC6F600E89F7B /* JokeGeneratorUITests */,
 				9A1B15802B4FC6F500E89F7B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -135,23 +127,6 @@
 				9A1B15902B4FC6F600E89F7B /* Info.plist */,
 			);
 			path = JokeGenerator;
-			sourceTree = "<group>";
-		};
-		9A1B15982B4FC6F600E89F7B /* JokeGeneratorTests */ = {
-			isa = PBXGroup;
-			children = (
-				9A1B15992B4FC6F600E89F7B /* JokeGeneratorTests.swift */,
-			);
-			path = JokeGeneratorTests;
-			sourceTree = "<group>";
-		};
-		9A1B15A22B4FC6F600E89F7B /* JokeGeneratorUITests */ = {
-			isa = PBXGroup;
-			children = (
-				9A1B15A32B4FC6F600E89F7B /* JokeGeneratorUITests.swift */,
-				9A1B15A52B4FC6F600E89F7B /* JokeGeneratorUITestsLaunchTests.swift */,
-			);
-			path = JokeGeneratorUITests;
 			sourceTree = "<group>";
 		};
 		9A1B15B22B4FD9B500E89F7B /* Resources */ = {
@@ -344,7 +319,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A1B159A2B4FC6F600E89F7B /* JokeGeneratorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,8 +326,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A1B15A42B4FC6F600E89F7B /* JokeGeneratorUITests.swift in Sources */,
-				9A1B15A62B4FC6F600E89F7B /* JokeGeneratorUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
