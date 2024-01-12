@@ -149,6 +149,13 @@
                             <constraint firstItem="dxn-i6-6NG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="y1S-LZ-prl"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="jokeId" destination="Yev-kC-G9k" id="16E-X5-NHR"/>
+                        <outlet property="jokeSetup" destination="LEf-dc-AgW" id="tep-YM-1Pe"/>
+                        <outlet property="jokeType" destination="0Wb-Av-7Sv" id="Lgh-Yj-WPJ"/>
+                        <outlet property="refreshButton" destination="NKX-gk-k47" id="MOQ-AT-ugf"/>
+                        <outlet property="showButton" destination="fSo-Bb-HYi" id="u0M-AF-BPP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
