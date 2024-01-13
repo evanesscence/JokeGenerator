@@ -3,23 +3,48 @@ import UIKit
 class ViewController: UIViewController {
     
     // MARK: IBOutlets
-    @IBOutlet private var jokeId: UIStackView!
-    @IBOutlet private var jokeType: UIStackView!
-    @IBOutlet private var jokeSetup: UIStackView!
+    @IBOutlet private var jokeIdStack: UIStackView!
+    @IBOutlet private var jokeTypeStack: UIStackView!
+    @IBOutlet private var jokeSetupStack: UIStackView!
+    
+    @IBOutlet private var jokeId: UILabel!
+    @IBOutlet private var jokeType: UILabel!
+    @IBOutlet private var jokeSetup: UILabel!
+    
     @IBOutlet private var refreshButton: UIButton!
     @IBOutlet private var showButton: UIButton!
     
+    // MARK: Private properties
     
+    private let jokes: [JokeModel] = [
+        JokeModel(
+            jokeId: "148",
+            type: "general",
+            setup: "Is the pool safe for diving?",
+            punchline: "It deep ends."),
+        
+        JokeModel(
+            jokeId: "27",
+            type: "general",
+            setup: "Why are pirates called pirates?",
+            punchline: "Because they arrr!")
+    ]
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setViews(views: [jokeId, jokeType, jokeSetup, refreshButton, showButton])
+        setViews(views: [jokeIdStack, jokeTypeStack, jokeSetupStack, refreshButton, showButton])
+        
+        let someJoke = jokes[0]
+        showJoke(model: someJoke)
     }
     
-    @IBAction func refreshButton(_ sender: Any) {
+    // MARK: - IB Actions
+    @IBAction private func refreshButton(_ sender: Any) {
     }
     
     
-    @IBAction func showButton(_ sender: Any) {
+    @IBAction private func showButton(_ sender: Any) {
     }
 
     // MARK: Private functions
@@ -31,6 +56,11 @@ class ViewController: UIViewController {
         }
     }
     
+    private func showJoke(model: JokeModel) {
+        jokeId.text = model.jokeId
+        jokeType.text = model.type
+        jokeSetup.text = model.setup
+    }
     
 }
 
