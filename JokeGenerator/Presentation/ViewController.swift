@@ -43,6 +43,9 @@ class ViewController: UIViewController {
     // MARK: - IB Actions
     @IBAction private func refreshButton(_ sender: Any) {
         currentJokeIndex += 1
+        
+        let nextJoke = self.jokes[self.currentJokeIndex]
+        self.showJoke(model: nextJoke)
     }
     
     

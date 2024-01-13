@@ -121,16 +121,12 @@
 		9A1B15812B4FC6F500E89F7B /* JokeGenerator */ = {
 			isa = PBXGroup;
 			children = (
+				9A4A5F902B528EFF008F40EE /* Presentation */,
+				9A4A5F8F2B528E85008F40EE /* Models */,
+				9A4A5F8E2B528E3C008F40EE /* Services */,
 				9A1B15B22B4FD9B500E89F7B /* Resources */,
 				9A1B15822B4FC6F500E89F7B /* AppDelegate.swift */,
 				9A1B15842B4FC6F500E89F7B /* SceneDelegate.swift */,
-				9A1B15862B4FC6F500E89F7B /* ViewController.swift */,
-				9A1B15882B4FC6F500E89F7B /* Main.storyboard */,
-				9A1B158B2B4FC6F600E89F7B /* Assets.xcassets */,
-				9A1B158D2B4FC6F600E89F7B /* LaunchScreen.storyboard */,
-				9A1B15902B4FC6F600E89F7B /* Info.plist */,
-				9A9E55272B5199850050CEC7 /* JokesFactory.swift */,
-				9A9E55292B5199C50050CEC7 /* JokeModel.swift */,
 			);
 			path = JokeGenerator;
 			sourceTree = "<group>";
@@ -138,6 +134,9 @@
 		9A1B15B22B4FD9B500E89F7B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9A1B158D2B4FC6F600E89F7B /* LaunchScreen.storyboard */,
+				9A1B158B2B4FC6F600E89F7B /* Assets.xcassets */,
+				9A1B15902B4FC6F600E89F7B /* Info.plist */,
 				9A1B15B32B4FD9CF00E89F7B /* Fonts */,
 			);
 			path = Resources;
@@ -169,6 +168,31 @@
 				9A1B15C12B4FD9F900E89F7B /* Roboto-Black.ttf */,
 			);
 			path = Roboto;
+			sourceTree = "<group>";
+		};
+		9A4A5F8E2B528E3C008F40EE /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9A9E55272B5199850050CEC7 /* JokesFactory.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		9A4A5F8F2B528E85008F40EE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9A9E55292B5199C50050CEC7 /* JokeModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9A4A5F902B528EFF008F40EE /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				9A1B15862B4FC6F500E89F7B /* ViewController.swift */,
+				9A1B15882B4FC6F500E89F7B /* Main.storyboard */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
