@@ -1,6 +1,6 @@
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, JokesFactoryDelegate {
     
     // MARK: IBOutlets
     @IBOutlet private var jokeIdStack: UIStackView!
@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet private var showButton: UIButton!
     
     // MARK: Private properties
-    private var jokesFactory: JokesFactory = JokesFactory()
+    private var jokesFactory: JokesFactoryProtocol?
     private var currentJoke: JokeModel?
     
     // MARK: - Lifecycle
@@ -23,23 +23,25 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setViews(views: [jokeIdStack, jokeTypeStack, jokeSetupStack, refreshButton, showButton])
         
-        guard let someJoke = jokesFactory.showNextJoke() else {
+        jokesFactory = JokesFactory(delegate: self)
+        jokesFactory?.showNextJoke()
+    }
+    
+    // MARK: - JokesFactoryDelegate
+    func didRecieveJoke(joke: JokeModel?) {
+        guard let joke = joke else {
             return
         }
         
-        currentJoke = someJoke
-        showJoke(model: someJoke)
+        currentJoke = joke
+        DispatchQueue.main.async { [weak self] in
+            self?.showJoke(model: joke)
+        }
     }
     
     // MARK: - IB Actions
     @IBAction private func refreshButton(_ sender: Any) {
-        
-        guard let nextJoke = jokesFactory.showNextJoke() else {
-            return
-        }
-        
-        currentJoke = nextJoke
-        self.showJoke(model: nextJoke)
+        jokesFactory?.showNextJoke()
     }
     
     
@@ -73,12 +75,7 @@ class ViewController: UIViewController {
         preferredStyle: .alert)
         
         let action = UIAlertAction(title: "OK", style: .default) { _ in
-            guard let newJoke = self.jokesFactory.showNextJoke() else {
-                return
-            }
-            
-            self.currentJoke = newJoke
-            self.showJoke(model: newJoke)
+            self.jokesFactory?.showNextJoke()
         }
         
         alert.addAction(action)

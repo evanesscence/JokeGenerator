@@ -1,6 +1,12 @@
 import Foundation
 
-class JokesFactory {
+class JokesFactory: JokesFactoryProtocol {
+    weak var delegate: JokesFactoryDelegate? 
+    
+    init(delegate: JokesFactoryDelegate?) {
+        self.delegate = delegate
+    }
+    
     private let jokes: [JokeModel] = [
         JokeModel(
             jokeId: "148",
@@ -28,10 +34,13 @@ class JokesFactory {
     ]
     
     
-    func showNextJoke() -> JokeModel? {
+    func showNextJoke() {
         guard let index = (0..<jokes.count).randomElement() else {
-            return nil
+            delegate?.didRecieveJoke(joke: nil)
+            return
         }
-        return jokes[index]
+        
+        let joke = jokes[index]
+        delegate?.didRecieveJoke(joke: joke)
     }
 }
