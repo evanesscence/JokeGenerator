@@ -1,6 +1,6 @@
 import Foundation
 
-struct JokeModel {
+struct JokeModel: Codable {
     let jokeId: String
     let type: String
     let setup: String
