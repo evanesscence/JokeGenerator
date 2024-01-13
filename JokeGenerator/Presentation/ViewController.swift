@@ -69,17 +69,19 @@ class ViewController: UIViewController, JokesFactoryDelegate {
     }
     
     private func showPunchline(from joke: JokeModel) {
-        let alert = UIAlertController(
-        title: "Punchline",
-        message: joke.punchline,
-        preferredStyle: .alert)
+        let punchlineAlert = AlertModel(
+            title: "Puncline",
+            message: joke.punchline,
+            buttonText: "OK") { [weak self] in
+                guard let self = self else {
+                    return
+                }
+                self.jokesFactory?.showNextJoke()
+            }
         
-        let action = UIAlertAction(title: "OK", style: .default) { _ in
-            self.jokesFactory?.showNextJoke()
-        }
-        
-        alert.addAction(action)
-        self.present(alert, animated: true, completion: nil)
+        let alert = Alert()
+        alert.delegate = self
+        alert.showAlert(with: punchlineAlert)
     }
     
 }
