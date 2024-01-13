@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet private var showButton: UIButton!
     
     // MARK: Private properties
+    private var currentJokeIndex = 0
     
     private let jokes: [JokeModel] = [
         JokeModel(
@@ -35,16 +36,18 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setViews(views: [jokeIdStack, jokeTypeStack, jokeSetupStack, refreshButton, showButton])
         
-        let someJoke = jokes[0]
+        let someJoke = jokes[currentJokeIndex]
         showJoke(model: someJoke)
     }
     
     // MARK: - IB Actions
     @IBAction private func refreshButton(_ sender: Any) {
+        currentJokeIndex += 1
     }
     
     
     @IBAction private func showButton(_ sender: Any) {
+        showPunchline(from: jokes[currentJokeIndex])
     }
 
     // MARK: Private functions
@@ -60,6 +63,23 @@ class ViewController: UIViewController {
         jokeId.text = model.jokeId
         jokeType.text = model.type
         jokeSetup.text = model.setup
+    }
+    
+    private func showPunchline(from joke: JokeModel) {
+        let alert = UIAlertController(
+        title: "Punchline",
+        message: joke.punchline,
+        preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "OK", style: .default) { _ in
+            self.currentJokeIndex += 1
+            
+            let newJoke = self.jokes[self.currentJokeIndex]
+            self.showJoke(model: newJoke)
+        }
+        
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
     
 }

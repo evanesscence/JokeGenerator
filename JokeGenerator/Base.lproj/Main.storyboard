@@ -157,7 +157,7 @@
                     </view>
                     <connections>
                         <outlet property="jokeId" destination="Gag-1L-T9S" id="hm2-PB-1Db"/>
-                        <outlet property="jokeIdStack" destination="8dG-AO-nbs" id="rwR-Op-laj"/>
+                        <outlet property="jokeIdStack" destination="Yev-kC-G9k" id="FnQ-rd-4rU"/>
                         <outlet property="jokeSetup" destination="Imt-qj-4gw" id="Bdw-dV-Zwu"/>
                         <outlet property="jokeSetupStack" destination="LEf-dc-AgW" id="IwG-aD-gT9"/>
                         <outlet property="jokeType" destination="4yP-gQ-Y2s" id="dSr-F3-gpE"/>
