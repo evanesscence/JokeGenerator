@@ -15,42 +15,40 @@ class ViewController: UIViewController {
     @IBOutlet private var showButton: UIButton!
     
     // MARK: Private properties
-    private var currentJokeIndex = 0
-    
-    private let jokes: [JokeModel] = [
-        JokeModel(
-            jokeId: "148",
-            type: "general",
-            setup: "Is the pool safe for diving?",
-            punchline: "It deep ends."),
-        
-        JokeModel(
-            jokeId: "27",
-            type: "general",
-            setup: "Why are pirates called pirates?",
-            punchline: "Because they arrr!")
-    ]
+    private var jokesFactory: JokesFactory = JokesFactory()
+    private var currentJoke: JokeModel?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setViews(views: [jokeIdStack, jokeTypeStack, jokeSetupStack, refreshButton, showButton])
         
-        let someJoke = jokes[currentJokeIndex]
+        guard let someJoke = jokesFactory.showNextJoke() else {
+            return
+        }
+        
+        currentJoke = someJoke
         showJoke(model: someJoke)
     }
     
     // MARK: - IB Actions
     @IBAction private func refreshButton(_ sender: Any) {
-        currentJokeIndex += 1
         
-        let nextJoke = self.jokes[self.currentJokeIndex]
+        guard let nextJoke = jokesFactory.showNextJoke() else {
+            return
+        }
+        
+        currentJoke = nextJoke
         self.showJoke(model: nextJoke)
     }
     
     
     @IBAction private func showButton(_ sender: Any) {
-        showPunchline(from: jokes[currentJokeIndex])
+        guard let currentJoke = currentJoke else {
+            return
+        }
+        
+        showPunchline(from: currentJoke)
     }
 
     // MARK: Private functions
@@ -75,9 +73,11 @@ class ViewController: UIViewController {
         preferredStyle: .alert)
         
         let action = UIAlertAction(title: "OK", style: .default) { _ in
-            self.currentJokeIndex += 1
+            guard let newJoke = self.jokesFactory.showNextJoke() else {
+                return
+            }
             
-            let newJoke = self.jokes[self.currentJokeIndex]
+            self.currentJoke = newJoke
             self.showJoke(model: newJoke)
         }
         

@@ -127,6 +127,7 @@
 				9A1B15B22B4FD9B500E89F7B /* Resources */,
 				9A1B15822B4FC6F500E89F7B /* AppDelegate.swift */,
 				9A1B15842B4FC6F500E89F7B /* SceneDelegate.swift */,
+				9A1B15902B4FC6F600E89F7B /* Info.plist */,
 			);
 			path = JokeGenerator;
 			sourceTree = "<group>";
@@ -136,7 +137,6 @@
 			children = (
 				9A1B158D2B4FC6F600E89F7B /* LaunchScreen.storyboard */,
 				9A1B158B2B4FC6F600E89F7B /* Assets.xcassets */,
-				9A1B15902B4FC6F600E89F7B /* Info.plist */,
 				9A1B15B32B4FD9CF00E89F7B /* Fonts */,
 			);
 			path = Resources;
