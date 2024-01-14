@@ -85,7 +85,7 @@
                                                             <constraint firstAttribute="height" constant="2" id="ZE6-BY-hpZ"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Why did the chicken get a penalty?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Imt-qj-4gw">
+                                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" text="Why did the chicken get a penalty?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Imt-qj-4gw">
                                                         <rect key="frame" x="24" y="81" width="281" height="119"/>
                                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="24"/>
                                                         <color key="textColor" name="RBlack"/>
@@ -145,17 +145,23 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="nVv-pc-gdu" userLabel="Indicator">
+                                <rect key="frame" x="186.66666666666666" y="428.66666666666669" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="Background"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dxn-i6-6NG" secondAttribute="bottom" constant="64" id="H6C-6V-BuH"/>
+                            <constraint firstItem="nVv-pc-gdu" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="etn-0Q-Mgy"/>
                             <constraint firstItem="dxn-i6-6NG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="64" id="fG3-7S-kwf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dxn-i6-6NG" secondAttribute="trailing" constant="32" id="jen-Wl-E9T"/>
+                            <constraint firstItem="nVv-pc-gdu" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="ury-4E-yhe"/>
                             <constraint firstItem="dxn-i6-6NG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="y1S-LZ-prl"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="nVv-pc-gdu" id="05l-q3-i3a"/>
                         <outlet property="jokeId" destination="Gag-1L-T9S" id="hm2-PB-1Db"/>
                         <outlet property="jokeIdStack" destination="Yev-kC-G9k" id="FnQ-rd-4rU"/>
                         <outlet property="jokeSetup" destination="Imt-qj-4gw" id="Bdw-dV-Zwu"/>

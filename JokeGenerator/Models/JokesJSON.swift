@@ -1,6 +1,6 @@
 import Foundation
 
-struct JokeModel: Codable {
+struct JokesJSON: Codable {
     let type: String
     let setup: String
     let punchline: String

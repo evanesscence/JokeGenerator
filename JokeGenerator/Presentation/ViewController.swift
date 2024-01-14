@@ -14,6 +14,8 @@ class ViewController: UIViewController, JokesFactoryDelegate {
     @IBOutlet private var refreshButton: UIButton!
     @IBOutlet private var showButton: UIButton!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     // MARK: Private properties
     private var jokesFactory: JokesFactoryProtocol?
     private var currentJoke: JokeModel?
@@ -23,8 +25,9 @@ class ViewController: UIViewController, JokesFactoryDelegate {
         super.viewDidLoad()
         setViews(views: [jokeIdStack, jokeTypeStack, jokeSetupStack, refreshButton, showButton])
         
-        jokesFactory = JokesFactory(delegate: self)
-        jokesFactory?.showNextJoke()
+        jokesFactory = JokesFactory(jokesLoader: JokesLoader(), delegate: self)
+        jokesFactory?.loadData()
+        showIndicator()
     }
     
     // MARK: - JokesFactoryDelegate
@@ -37,6 +40,15 @@ class ViewController: UIViewController, JokesFactoryDelegate {
         DispatchQueue.main.async { [weak self] in
             self?.showJoke(model: joke)
         }
+    }
+    
+    func didLoadDataFromServer() {
+        activityIndicator.isHidden = true
+        jokesFactory?.showNextJoke()
+    }
+    
+    func didFailToLoadData(with error: Error) {
+        showNetworkError(message: error.localizedDescription)
     }
     
     // MARK: - IB Actions
@@ -52,7 +64,7 @@ class ViewController: UIViewController, JokesFactoryDelegate {
         
         showPunchline(from: currentJoke)
     }
-
+    
     // MARK: Private functions
     private func setViews(views: [UIView]) {
         views.forEach {
@@ -63,7 +75,7 @@ class ViewController: UIViewController, JokesFactoryDelegate {
     }
     
     private func showJoke(model: JokeModel) {
-        jokeId.text = model.jokeId
+        jokeId.text = model.id
         jokeType.text = model.type
         jokeSetup.text = model.setup
     }
@@ -80,9 +92,31 @@ class ViewController: UIViewController, JokesFactoryDelegate {
             }
         
         let alert = Alert()
-        alert.delegate = self
-        alert.showAlert(with: punchlineAlert)
+        alert.showAlert(in: self, with: punchlineAlert)
     }
     
+    private func showIndicator() {
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+    }
+    
+    private func hideIndicator() {
+        activityIndicator.isHidden = true
+    }
+    
+    private func showNetworkError(message: String) {
+        hideIndicator()
+        
+        let model = AlertModel(title: "Ошибка",
+                               message: message,
+                               buttonText: "Попробовать еще раз") { [weak self] in
+            guard let self = self else { return }
+            
+            self.jokesFactory?.showNextJoke()
+        }
+        
+        let alert = Alert()
+        alert.showAlert(in: self, with: model)
+    }
 }
 
