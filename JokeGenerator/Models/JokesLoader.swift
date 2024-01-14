@@ -5,12 +5,13 @@ protocol JokesLoading {
 }
 
 struct JokesLoader: JokesLoading {
-    private let networkClient = NetworkClient()
+    // MARK: - NetworkClient
+    private let networkClient = Network()
     
     // MARK: - URL
     private var jokesUrl: URL {
         guard let url = URL(string: "https://official-joke-api.appspot.com/jokes/random") else {
-            preconditionFailure("Unable to construct jokeUrl")
+            preconditionFailure("Unable to construct mostPopularMoviesUrl")
         }
         return url
     }
@@ -20,8 +21,8 @@ struct JokesLoader: JokesLoading {
             switch result {
             case .success(let data):
                 do {
-                    let joke = try JSONDecoder().decode(JokeModel.self, from: data)
-                    handler(.success(joke))
+                    let getJoke = try JSONDecoder().decode(JokeModel.self, from: data)
+                    handler(.success(getJoke))
                 } catch {
                     handler(.failure(error))
                 }

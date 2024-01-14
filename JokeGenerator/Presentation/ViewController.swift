@@ -26,8 +26,9 @@ class ViewController: UIViewController, JokesFactoryDelegate {
         setViews(views: [jokeIdStack, jokeTypeStack, jokeSetupStack, refreshButton, showButton])
         
         jokesFactory = JokesFactory(jokesLoader: JokesLoader(), delegate: self)
-        jokesFactory?.loadData()
+        
         showIndicator()
+        jokesFactory?.loadData()
     }
     
     // MARK: - JokesFactoryDelegate
@@ -47,13 +48,9 @@ class ViewController: UIViewController, JokesFactoryDelegate {
         jokesFactory?.showNextJoke()
     }
     
-    func didFailToLoadData(with error: Error) {
-        showNetworkError(message: error.localizedDescription)
-    }
-    
     // MARK: - IB Actions
     @IBAction private func refreshButton(_ sender: Any) {
-        jokesFactory?.showNextJoke()
+        jokesFactory?.loadData()
     }
     
     
@@ -75,7 +72,7 @@ class ViewController: UIViewController, JokesFactoryDelegate {
     }
     
     private func showJoke(model: JokeModel) {
-        jokeId.text = model.id
+        jokeId.text = String(model.id)
         jokeType.text = model.type
         jokeSetup.text = model.setup
     }
@@ -88,7 +85,7 @@ class ViewController: UIViewController, JokesFactoryDelegate {
                 guard let self = self else {
                     return
                 }
-                self.jokesFactory?.showNextJoke()
+                self.jokesFactory?.loadData()
             }
         
         let alert = Alert()
@@ -100,23 +97,5 @@ class ViewController: UIViewController, JokesFactoryDelegate {
         activityIndicator.startAnimating()
     }
     
-    private func hideIndicator() {
-        activityIndicator.isHidden = true
-    }
-    
-    private func showNetworkError(message: String) {
-        hideIndicator()
-        
-        let model = AlertModel(title: "Ошибка",
-                               message: message,
-                               buttonText: "Попробовать еще раз") { [weak self] in
-            guard let self = self else { return }
-            
-            self.jokesFactory?.showNextJoke()
-        }
-        
-        let alert = Alert()
-        alert.showAlert(in: self, with: model)
-    }
 }
 
