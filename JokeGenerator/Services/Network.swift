@@ -1,6 +1,6 @@
 import Foundation
 
-struct Network {
+class Network {
     
     private enum NetworkError: Error {
         case codeError

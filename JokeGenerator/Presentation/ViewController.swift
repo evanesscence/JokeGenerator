@@ -25,7 +25,7 @@ class ViewController: UIViewController, JokesFactoryDelegate {
         super.viewDidLoad()
         setViews(views: [jokeIdStack, jokeTypeStack, jokeSetupStack, refreshButton, showButton])
         
-        jokesFactory = JokesFactory(jokesLoader: JokesLoader(), delegate: self)
+        jokesFactory = JokesFactory(jokesLoader: JokesLoader(networkClient: Network()), delegate: self)
         
         showIndicator()
         jokesFactory?.loadData()

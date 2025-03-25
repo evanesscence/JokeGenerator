@@ -6,7 +6,7 @@ protocol JokesLoading {
 
 struct JokesLoader: JokesLoading {
     // MARK: - NetworkClient
-    private let networkClient = Network()
+    let networkClient: Network
     
     // MARK: - URL
     private var jokesUrl: URL {
